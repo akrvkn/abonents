@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var mosturflot = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTbc8ZlxPyRQrzalD3xT-4h2Y28bQRqLkDsvfRlZSqWZBpUhPAl7y2EkA1izfs78S5vIi-rMI_H_j70/pub?gid=0&single=true&output=csv";
+    var mosturflot = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsgrZpP0_yy6vq6Bwsi8WthGTP93KBxayTeJiKw_cpsmHFJIcxmkO8sV4GsS_wbBWaiYRIDk4HraOc/pub?output=csv";
 
     var mrpgroup = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRb3fmvItxj-9wzCviuCwIHBeJLxJzgHXcw3Z_pD46KA3Fa1Qt5flVHqJpoaj9fV-11QBQBSK7B_-iQ/pub?output=csv";
 
@@ -13,7 +13,6 @@ $(document).ready(function() {
         $.get(mrpgroup),
         $.get(uport),
     ).then(function(mtf, mrp, port) {
-        //console.log(mtf, mrp, port);
         if(processData(mtf[0])){
             if(processData(mrp[0])){
                 if(processData(port[0])){
