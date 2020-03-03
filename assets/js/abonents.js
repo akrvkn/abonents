@@ -47,6 +47,7 @@ $(document).ready(function() {
             { "data": "localorder" },
             { "data": "name" },
             { "data": "cityphone", "class": "nowrap" },
+            { "data": "cellphone", "class": "nowrap" },
             { "data": "officephone" },
             { "data": "fmc" },
             { "data": "speciality" },
@@ -64,11 +65,11 @@ $(document).ready(function() {
         "createdRow": function ( row, data ) {
             $.each(companies, function(k,v){
                 if(k===data['company'])
-                    $('td', row).eq(8).text(v);
+                    $('td', row).eq(9).text(v);
             });
         },
         "initComplete": function () {
-            this.api().columns(8).every( function () {
+            this.api().columns(9).every( function () {
                 var column = this;
                 //console.log(get_ship);
                 if (com.length > 0) {
@@ -86,16 +87,16 @@ $(document).ready(function() {
     } ).draw();
 
     $('#company').on('change', function(){
-        t.columns(8).search(this.value).draw();
+        t.columns(9).search(this.value).draw();
     });
 
     $('#qsearch').on('keyup', function()
     {
-        t.columns(8).search('').draw();
+        t.columns(9).search('').draw();
         t.search(this.value).draw();
         //t.columns(1).search(this.value).draw();
         if(this.value.length < 3){
-            t.columns(8).search($('#company').val()).draw();
+            t.columns(9).search($('#company').val()).draw();
         }
 
     } );
