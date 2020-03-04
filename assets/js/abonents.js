@@ -6,17 +6,22 @@ $(document).ready(function() {
 
      var uport = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlt95bIV9DqQw037IkgLOgSc3z_-OxyXarwclj2rMncvAuiMnhr1_5Iq5D5gqiyDNjYDoFuR0QY1DV/pub?output=csv";
 
+     var piter = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLnWPibdy-uspaH86Qi98w1LkjknTgxpiSSB59bZt8LALNWLN3KQF05IKjjWnY-udhgH1BeaP-1pNF/pub?output=csv";
+
      var data = [];
 
     $.when(
         $.get(mosturflot),
         $.get(mrpgroup),
         $.get(uport),
-    ).then(function(mtf, mrp, port) {
-        if(processData(mtf[0])){
-            if(processData(mrp[0])){
-                if(processData(port[0])){
-                    InitDatatable();
+        $.get(piter),
+    ).then(function(mtf, mrp, port, pit) {
+        if(processData(mtf[0], 'mosturflot')){
+            if(processData(mrp[0], 'mrp')){
+                if(processData(port[0], 'uport')){
+                    if(processData(pit[0], 'piter')) {
+                        InitDatatable();
+                    }
                 }
             }
         };
@@ -24,22 +29,22 @@ $(document).ready(function() {
     });
 
 
-    function processData(allText) {
+    function processData(allText, com) {
         let all = allText.split(/\r\n|\n/);
         let row = '';
         for(let i=1;i<all.length;i++){
             row = all[i].split(',');
             let r = {
-                localorder: row[0],
-                name: row[1],
-                cityphone: row[2],
-                cellphone: row[3],
-                officephone: row[4],
-                fmc: row[5],
-                speciality: row[6],
-                department: row[7],
-                room: row[8],
-                company: row[9]
+                localorder: i,
+                name: row[0],
+                cityphone: row[1],
+                cellphone: row[2],
+                officephone: row[3],
+                fmc: row[4],
+                speciality: row[5],
+                department: row[6],
+                room: row[7],
+                company: com
             };
             data.push(r);
             if(i === all.length - 1){
@@ -52,7 +57,7 @@ $(document).ready(function() {
 
 
 
-    //var ajax_url = 'assets/data/all.json';
+    var ajax_url = 'assets/data/all.json';
     var com = 'mrp';
     var companies = {
         mrp: "МРП",
