@@ -62,7 +62,8 @@ $(document).ready(function() {
     var companies = {
         mrp: "МРП",
         mosturflot: "Мостурфлот",
-        uport: "Южный порт"
+        uport: "Южный порт",
+        piter: "Русский навигатор"
     };
     function InitDatatable() {
         var t = $('#personal').DataTable({
