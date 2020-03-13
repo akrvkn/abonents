@@ -1,14 +1,22 @@
 $(document).ready(function() {
 
-    var mosturflot = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsgrZpP0_yy6vq6Bwsi8WthGTP93KBxayTeJiKw_cpsmHFJIcxmkO8sV4GsS_wbBWaiYRIDk4HraOc/pub?output=csv";
+    const mosturflot = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsgrZpP0_yy6vq6Bwsi8WthGTP93KBxayTeJiKw_cpsmHFJIcxmkO8sV4GsS_wbBWaiYRIDk4HraOc/pub?output=csv";
 
-    var mrpgroup = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRb3fmvItxj-9wzCviuCwIHBeJLxJzgHXcw3Z_pD46KA3Fa1Qt5flVHqJpoaj9fV-11QBQBSK7B_-iQ/pub?output=csv";
+    const mrpgroup = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRb3fmvItxj-9wzCviuCwIHBeJLxJzgHXcw3Z_pD46KA3Fa1Qt5flVHqJpoaj9fV-11QBQBSK7B_-iQ/pub?output=csv";
 
-     var uport = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlt95bIV9DqQw037IkgLOgSc3z_-OxyXarwclj2rMncvAuiMnhr1_5Iq5D5gqiyDNjYDoFuR0QY1DV/pub?output=csv";
+    const uport = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlt95bIV9DqQw037IkgLOgSc3z_-OxyXarwclj2rMncvAuiMnhr1_5Iq5D5gqiyDNjYDoFuR0QY1DV/pub?output=csv";
 
-     var piter = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLnWPibdy-uspaH86Qi98w1LkjknTgxpiSSB59bZt8LALNWLN3KQF05IKjjWnY-udhgH1BeaP-1pNF/pub?output=csv";
+    const piter = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLnWPibdy-uspaH86Qi98w1LkjknTgxpiSSB59bZt8LALNWLN3KQF05IKjjWnY-udhgH1BeaP-1pNF/pub?output=csv";
 
-     var data = [];
+    /*const mosturflot = "assets/data/mosturflot.csv";
+
+    const mrpgroup = "assets/data/mrp.csv";
+
+    const uport = "assets/data/uport.csv";
+
+    const piter = "assets/data/piter.csv";*/
+
+    const data = [];
 
     $.when(
         $.get(mosturflot),
@@ -24,7 +32,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        };
+        }
 
     });
 
@@ -55,29 +63,20 @@ $(document).ready(function() {
 
     }
 
-
-
-    var ajax_url = 'assets/data/all.json';
-    var com = 'mrp';
-    var companies = {
+    let com = 'mrp';
+    const companies = {
         mrp: "МРП",
         mosturflot: "Мостурфлот",
         uport: "Южный порт",
         piter: "Русский навигатор"
     };
     function InitDatatable() {
-        var t = $('#personal').DataTable({
+        const t = $('#personal').DataTable({
             dom: '<"right"B>T<"clear"><"top"i>rt',
             buttons: [
                 'excel', 'print'
             ],
             data: data,
-            /*"ajax": {
-                "url": ajax_url,
-                "dataSrc": function (json) {
-                    return json;
-                }
-            },*/
             language: {
                 processing: "Подождите...",
                 search: "Поиск:",
@@ -116,13 +115,6 @@ $(document).ready(function() {
                 {"data": "room"},
                 {"data": "company", "class": "nowrap"}
             ],
-            "columnDefs": [
-                {
-                    //"targets": [ 0 ],
-                    //"sortable": false,
-                    //"searchable": false
-                }
-            ],
             "createdRow": function (row, data) {
                 $.each(companies, function (k, v) {
                     if (k === data['company'])
@@ -131,8 +123,7 @@ $(document).ready(function() {
             },
             "initComplete": function () {
                 this.api().columns(9).every(function () {
-                    var column = this;
-                    //console.log(get_ship);
+                    let column = this;
                     if (com.length > 0) {
                         column.search(com).draw();
                     }
@@ -154,7 +145,6 @@ $(document).ready(function() {
         $('#qsearch').on('keyup', function () {
             t.columns(9).search('').draw();
             t.search(this.value).draw();
-            //t.columns(1).search(this.value).draw();
             if (this.value.length < 3) {
                 t.columns(9).search($('#company').val()).draw();
             }
