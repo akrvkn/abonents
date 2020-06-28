@@ -53,14 +53,14 @@ $(document).ready(function() {
             row = all[i].split(',');
             let r = {
                 localorder: i,
-                name: row[0],
-                cityphone: row[1],
-                cellphone: row[2],
-                officephone: row[3],
-                fmc: row[4],
-                speciality: row[5],
-                department: row[6],
-                room: row[7],
+                name: row[0].replace(/"/g, ''),
+                cityphone: row[1].replace(/"/g, ''),
+                cellphone: row[2].replace(/"/g, ''),
+                officephone: row[3].replace(/"/g, ''),
+                fmc: row[4].replace(/"/g, ''),
+                speciality: row[5].replace(/"/g, ''),
+                department: row[6].replace(/"/g, ''),
+                room: row[7].replace(/"/g, ''),
                 company: com
             };
             data.push(r);
