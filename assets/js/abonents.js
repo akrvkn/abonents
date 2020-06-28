@@ -1,4 +1,5 @@
 $(document).ready(function() {
+//https://docs.google.com/spreadsheets/d/1VdlOTyBsSf8Qcr3TIc6x34rORbNQ7n2QcCNRe3zHg6c/gviz/tq?tqx=out:csv&sheet=Лист1
 
     /*const mosturflot = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsgrZpP0_yy6vq6Bwsi8WthGTP93KBxayTeJiKw_cpsmHFJIcxmkO8sV4GsS_wbBWaiYRIDk4HraOc/pub?output=csv";
 
@@ -7,15 +8,22 @@ $(document).ready(function() {
     const uport = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlt95bIV9DqQw037IkgLOgSc3z_-OxyXarwclj2rMncvAuiMnhr1_5Iq5D5gqiyDNjYDoFuR0QY1DV/pub?output=csv";
 
     const piter = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLnWPibdy-uspaH86Qi98w1LkjknTgxpiSSB59bZt8LALNWLN3KQF05IKjjWnY-udhgH1BeaP-1pNF/pub?output=csv";*/
+    const mosturflot = "https://docs.google.com/spreadsheets/d/1kIJe3PmiSKcYqr7LHpjn1PG0dInPOmYhx7Cd3r51kRo/gviz/tq?tqx=out:csv";
+
+    const mrpgroup = "https://docs.google.com/spreadsheets/d/1hwO3ZA90ZW2cU_SVjmrYQondBhjPglTzj8HdNGAsPvA/gviz/tq?tqx=out:csv";
+
+    const uport = "https://docs.google.com/spreadsheets/d/1ZNh79fXk5-UEZ4YLTZLwbcPUi-6kUG88BYZk4GcABIA/gviz/tq?tqx=out:csv";
+
+    const piter = "https://docs.google.com/spreadsheets/d/1nYYm-NsofUFZmpLODo3bNepmvnqgir51M5_v5HLNgUg/gviz/tq?tqx=out:csv";
 
 
-    const mosturflot = "assets/data/mosturflot.csv";
+    /*const mosturflot = "assets/data/mosturflot.csv";
 
     const mrpgroup = "assets/data/mrp.csv";
 
     const uport = "assets/data/uport.csv";
 
-    const piter = "assets/data/piter.csv";
+    const piter = "assets/data/piter.csv";*/
 
     const data = [];
 
