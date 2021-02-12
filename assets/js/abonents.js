@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     const mrpgroup = "https://docs.google.com/spreadsheets/d/1hwO3ZA90ZW2cU_SVjmrYQondBhjPglTzj8HdNGAsPvA/gviz/tq?tqx=out:csv";
 
-    const uport = "https://docs.google.com/spreadsheets/d/1ZNh79fXk5-UEZ4YLTZLwbcPUi-6kUG88BYZk4GcABIA/gviz/tq?tqx=out:csv";
+    //const uport = "https://docs.google.com/spreadsheets/d/1ZNh79fXk5-UEZ4YLTZLwbcPUi-6kUG88BYZk4GcABIA/gviz/tq?tqx=out:csv";
 
     const piter = "https://docs.google.com/spreadsheets/d/1nYYm-NsofUFZmpLODo3bNepmvnqgir51M5_v5HLNgUg/gviz/tq?tqx=out:csv";
 
@@ -30,16 +30,16 @@ $(document).ready(function() {
     $.when(
         $.get(mosturflot),
         $.get(mrpgroup),
-        $.get(uport),
+        //$.get(uport),
         $.get(piter),
-    ).then(function(mtf, mrp, port, pit) {
+    ).then(function(mtf, mrp, pit) {
         if(processData(mtf[0], 'mosturflot')){
             if(processData(mrp[0], 'mrp')){
-                if(processData(port[0], 'uport')){
+                //if(processData(port[0], 'uport')){
                     if(processData(pit[0], 'piter')) {
                         InitDatatable();
                     }
-                }
+               // }
             }
         }
 
