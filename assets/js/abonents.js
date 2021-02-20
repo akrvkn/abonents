@@ -72,6 +72,7 @@ $(document).ready(function() {
                 speciality: row[5].replace(/"/g, ''),
                 department: row[6].replace(/"/g, ''),
                 room: row[7].replace(/"/g, ''),
+                org: row[8].replace(/"/g, ''),
                 company: com
             };
             data.push(r);
@@ -134,16 +135,20 @@ $(document).ready(function() {
                 {"data": "speciality"},
                 {"data": "department"},
                 {"data": "room"},
+                {"data": "org"},
                 {"data": "company", "class": "nowrap"}
+            ],
+            columnDefs: [
+                { targets: [10], visible: false, searchable: true},
             ],
             "createdRow": function (row, data) {
                 $.each(companies, function (k, v) {
                     if (k === data['company'])
-                        $('td', row).eq(9).text(v);
+                        $('td', row).eq(10).text(v);
                 });
             },
             "initComplete": function () {
-                this.api().columns(9).every(function () {
+                this.api().columns(10).every(function () {
                     let column = this;
                     if (com.length > 0) {
                         column.search(com).draw();
@@ -160,14 +165,14 @@ $(document).ready(function() {
         }).draw();
 
         $('#company').on('change', function () {
-            t.columns(9).search(this.value).draw();
+            t.columns(10).search(this.value).draw();
         });
 
         $('#qsearch').on('keyup', function () {
-            t.columns(9).search('').draw();
+            t.columns(10).search('').draw();
             t.search(this.value).draw();
             if (this.value.length < 3) {
-                t.columns(9).search($('#company').val()).draw();
+                t.columns(10).search($('#company').val()).draw();
             }
 
         });
