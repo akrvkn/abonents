@@ -15,6 +15,13 @@ $(document).ready(function() {
     //const uport = "https://docs.google.com/spreadsheets/d/1ZNh79fXk5-UEZ4YLTZLwbcPUi-6kUG88BYZk4GcABIA/gviz/tq?tqx=out:csv";
 
     const piter = "https://docs.google.com/spreadsheets/d/1nYYm-NsofUFZmpLODo3bNepmvnqgir51M5_v5HLNgUg/gviz/tq?tqx=out:csv";
+    //https://docs.google.com/spreadsheets/d/1o6XojdICFDHYqu3IG2WuFQ3ocFsQ2iqN-F__Rcvsl_I/edit?usp=sharing
+    const offices = "https://docs.google.com/spreadsheets/d/1o6XojdICFDHYqu3IG2WuFQ3ocFsQ2iqN-F__Rcvsl_I/gviz/tq?tqx=out:csv";
+
+    //https://docs.google.com/spreadsheets/d/19l50oWpYZIhaBuxxf0CWOhum_6QatxPIAYhPRcACLQ4/edit?usp=sharing
+    const ships = "https://docs.google.com/spreadsheets/d/19l50oWpYZIhaBuxxf0CWOhum_6QatxPIAYhPRcACLQ4/gviz/tq?tqx=out:csv";
+
+
 
 
     /*const mosturflot = "assets/data/mosturflot.csv";
@@ -30,20 +37,24 @@ $(document).ready(function() {
     $.when(
         $.get(mosturflot),
         $.get(mrpgroup),
-        //$.get(uport),
+        $.get(offices),
         $.get(piter),
-    ).then(function(mtf, mrp, pit) {
+        $.get(ships),
+    ).then(function(mtf, mrp, off, pit, shp) {
         if(processData(mtf[0], 'mosturflot')){
             if(processData(mrp[0], 'mrp')){
-                //if(processData(port[0], 'uport')){
+                if(processData(off[0], 'offices')) {
                     if(processData(pit[0], 'piter')) {
-                        InitDatatable();
+                        if(processData(shp[0], 'ships')) {
+                            InitDatatable();
+                        }
                     }
-               // }
+                }
             }
         }
 
     });
+
 
 
     function processData(allText, com) {
@@ -74,10 +85,11 @@ $(document).ready(function() {
 
     let com = 'mrp';
     const companies = {
-        mrp: "МРП",
-        mosturflot: "Мостурфлот",
-        uport: "Южный порт",
-        piter: "Русский навигатор"
+        mrp: "Ривер Сити",
+        mosturflot: "ХМСЗ",
+        offices: "Офисы продаж",
+        piter: "Офис Питер",
+        ships: "Теплоходы"
     };
     function InitDatatable() {
         const t = $('#personal').DataTable({
